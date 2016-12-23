@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :locations
-  has_many :meals
-  has_many :customers
+  has_many :locations, dependent: :destroy
+  has_many :meals, foreign_key: "creator_id", dependent: :destroy
+  has_many :customers, dependent: :destroy
 end
