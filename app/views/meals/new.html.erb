@@ -1,1 +1,11 @@
 <h1>The page where you can create a NEW MEAL</h1>
+
+<%= simple_form_for @meal do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.input :quantity %>
+
+  <%= f.button :submit %>
+<% end %>
