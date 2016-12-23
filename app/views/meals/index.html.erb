@@ -1,1 +1,10 @@
 <h1>This is the index page for all the MEALS</h1>
+<ul>
+ ------
+<% @meals.each do |meal| %>
+ <li><%= meal.title %></li>
+ <li><%= meal.description %></li>
+ <%= link_to "See meal", meal_path(meal) %>
+ -------
+<% end %>
+</ul>
