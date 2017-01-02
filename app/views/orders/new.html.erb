@@ -1,1 +1,7 @@
 <h1>This is the page where you can make a NEW ORDER</h1>
+<h2>The meal you are about to order is: <%= @meal.title %></h2>
+<%= simple_form_for [@meal, @order] do |f| %>
+  <%= f.input :amount, collection: 1..@quantity %>
+  <%= f.input :message, as: :text %>
+  <%= f.button :submit %>
+<% end %>
