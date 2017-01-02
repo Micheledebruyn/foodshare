@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :locations, dependent: :destroy
   has_many :meals, foreign_key: "creator_id", dependent: :destroy
   has_many :customers, dependent: :destroy
+  has_many :orders, through: :meals
 end
