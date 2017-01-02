@@ -1,1 +1,7 @@
 <h1>This is the page where you can write a new review</h1>
+<%= simple_form_for [@meal, @review] do |f| %>
+  <%= f.input :content, as: :text %>
+  <%= f.input :stars, collection: 1..5 %>
+
+  <%= f.button :submit %>
+<% end %>
