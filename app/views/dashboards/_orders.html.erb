@@ -1,1 +1,41 @@
 <h1>Partial for rendering the orders</h1>
+
+<h2>
+  These are all the orders you have made
+</h2>
+<% @purchases.each do |purchase| %>
+<p>
+  First name:
+  <%= purchase.user.first_name %>
+</p>
+<% purchase.orders.each do |order| %>
+<p>
+  This is the :
+  <%= order.amount %>
+</p>
+<% end %>
+<% end %>
+
+<h2>
+  This is something else
+</h2>
+ This should be an amount of money per customer per order on a specific meal
+<% @meals.each do |meal| %>
+<% meal.customers.each do |customer| %>
+<p>
+
+  <%= customer.user.first_name %>
+  <ul>
+    <% customer.orders.each_with_index do |order, index| %>
+    <li>
+      <strong>
+      <%= index + 1 %>:
+      </strong>
+      <%= meal.title %>
+      <%= order.amount %>
+    </li>
+    <% end %>
+  </ul>
+</p>
+<% end %>
+<% end %>
