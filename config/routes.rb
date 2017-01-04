@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resource :dashboard, only: [:show]
 
-  resources :meals, only: [:index, :show, :new, :create] do
+  resources :meals, only: [:index, :show, :new, :create, :edit, :update] do
     resources :reviews, only: [:index, :new, :create]
     resources :orders, only: [:index, :new, :create] do
       member do
