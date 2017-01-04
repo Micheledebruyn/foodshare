@@ -1,4 +1,11 @@
 <h1>Partial for rendering meals current user</h1>
-<% @meals.each do |meal| %>
-  <%= meal.title %>
-<% end %>
+<div class="meals">
+  <% @meals.each do |meal| %>
+  <div class="meal">
+    <%= meal.title %>
+    <%= link_to "See Meal", meal_path(meal) %>
+    <!-- FIX ME; add edit meal -->
+    <%#= link_to "Edit Meal", meal_path(meal) %>
+  </div>
+  <% end %>
+</div>
