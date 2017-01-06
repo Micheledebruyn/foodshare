@@ -1,0 +1,27 @@
+.banner {
+  background-image: url("https://unsplash.it/1400/600");
+  background-size: cover;
+  background-position: center bottom;
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .banner-content {
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h1 {
+      color: white;
+    }
+    .banner-search {
+      form {
+        display: flex;
+        #query {
+          flex: 1 0 auto;
+        }
+      }
+    }
+  }
+}

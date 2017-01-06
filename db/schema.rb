@@ -73,14 +73,6 @@ ActiveRecord::Schema.define(version: 20170106155645) do
     t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.string   "picture_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "meal_id"
-    t.index ["meal_id"], name: "index_pictures_on_meal_id", using: :btree
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "stars"
@@ -116,6 +108,5 @@ ActiveRecord::Schema.define(version: 20170106155645) do
   add_foreign_key "locations", "users"
   add_foreign_key "meals", "users", column: "creator_id"
   add_foreign_key "orders", "customers"
-  add_foreign_key "pictures", "meals"
   add_foreign_key "reviews", "meals"
 end
