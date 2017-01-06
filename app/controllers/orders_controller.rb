@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_meal, only: [:show, :new, :create]
+  before_action :find_meal, only: [:new, :create]
 
   def index
     @orders = Order.all
@@ -7,19 +7,23 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    ##FIXME portion_remaining
+    ## FIX ME portion_remaining
     @quantity = @meal.quantity
   end
 
   def create
     @order = Order.new(order_params)
-    # if @meal.portion_remaining >= @order.amount
-    @customer = Customer.create!(user: current_user, meal: @meal)
-    @order.customer_id = @customer.id
-    if @order.save!
-      redirect_to dashboard_path
+    if @order.amount <= @meal.portion_remaining
+      @customer = Customer.create!(user: current_user, meal: @meal)
+      @order.customer_id = @customer.id
+      @meal.update(portion_remaining: (@meal.portion_remaining - @order.amount))
+      if @order.save!
+        redirect_to dashboard_path
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:alert] = "The meal has just sold out.. Sorry!"
     end
   end
 

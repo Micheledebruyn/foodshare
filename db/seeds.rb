@@ -19,11 +19,23 @@ harry = User.create!(email: "y@y.com", password: "123456", first_name: "Harry", 
 greet = User.create!(email: "z@z.com", password: "123456", first_name: "Greet", last_name: "Vergeet", phone_number: "+223 345646")
 
 
-potato = Meal.create!(title: "Amazing Potato Salad", description: "Contains a lot of stufffff", quantity: 4, start_date: "2016-12-22", end_date: "2016-12-24", creator_id: hans.id)
-curry = Meal.create!(title: "Amazing Indian curry", description: "Contains a lot of stufffff", quantity: 3, start_date: "2016-12-27", end_date: "2016-12-29", creator_id: harry.id)
-pasta = Meal.create!(title: "Amazing Italian pasta", description: "Contains a lot of stufffff", quantity: 5, start_date: "2016-12-26", end_date: "2016-12-29", creator_id: greet.id)
-rice = Meal.create!(title: "Amazing Asian stir fry", description: "Contains a lot of stufffff", quantity: 6, start_date: "2016-12-29", end_date: "2016-12-30", creator_id: hans.id)
-salad = Meal.create!(title: "Amazing skinny salad", description: "Contains a lot of stufffff", quantity: 3, start_date: "2016-12-27", end_date: "2016-12-29", creator_id: harry.id)
+urls = [
+  'http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2010/4/26/0/FNM_060110-Weeknight-009_s4x3.jpg.rend.sni12col.landscape.jpeg',
+  'https://drewpan.files.wordpress.com/2012/09/ryusei-japanese-curry.jpeg'
+]
+
+potato = Meal.create!(title: "Amazing Potato Salad", description: "Contains a lot of stufffff", quantity: 4, portion_remaining: 4, start_date: "2016-12-22", end_date: "2016-12-24", creator_id: hans.id)
+curry = Meal.create!(title: "Amazing Indian curry", description: "Contains a lot of stufffff", quantity: 3, portion_remaining: 3, start_date: "2016-12-27", end_date: "2016-12-29", creator_id: harry.id)
+pasta = Meal.create!(title: "Amazing Italian pasta", description: "Contains a lot of stufffff", quantity: 5, portion_remaining: 5, start_date: "2016-12-26", end_date: "2016-12-29", creator_id: greet.id)
+rice = Meal.create!(title: "Amazing Asian stir fry", description: "Contains a lot of stufffff", quantity: 6, portion_remaining: 6, start_date: "2016-12-29", end_date: "2016-12-30", creator_id: hans.id)
+salad = Meal.create!(title: "Amazing skinny salad", description: "Contains a lot of stufffff", quantity: 3, portion_remaining: 3, start_date: "2016-12-27", end_date: "2016-12-29", creator_id: harry.id)
+
+potato.photo_urls = urls
+curry.photo_urls = urls
+pasta.photo_urls = urls
+rice.photo_urls = urls
+salad.photo_urls = urls
 
 horrible = Review.create!(content: "OMG that was soooo horibble never again in my lifetime", stars: 1, meal_id: curry.id)
 great = Review.create!(content: "OMG that was soooo amazing forever again in my lifetime", stars: 4, meal_id: potato.id)
+
