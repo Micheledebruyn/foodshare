@@ -26,11 +26,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def accept
-  end
-
-  def decline
-  end
 
   private
 

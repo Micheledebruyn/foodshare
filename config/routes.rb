@@ -8,10 +8,6 @@ Rails.application.routes.draw do
   resources :meals, only: [:index, :show, :new, :create, :edit, :update] do
     resources :reviews, only: [:index, :new, :create]
     resources :orders, only: [:index, :new, :create] do
-      member do
-        patch :accept
-        patch :decline
-      end
     end
   end
 end
