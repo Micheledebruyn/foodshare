@@ -3,4 +3,6 @@ class Meal < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :customers, dependent: :destroy
 
+  has_attachments :photos, maximum: 3
+
 end
