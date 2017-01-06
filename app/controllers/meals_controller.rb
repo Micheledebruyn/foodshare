@@ -15,6 +15,7 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.creator_id = current_user.id
+    @meal.portion_remaining = @meal.quantity
     @meal.save!
     redirect_to meals_path
   end
