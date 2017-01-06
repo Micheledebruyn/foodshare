@@ -1,18 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :find_meal, only: [:show, :new, :create]
+
   def index
     @orders = Order.all
   end
 
   def new
     @order = Order.new
-    @meal = Meal.find(params[:meal_id])
     ##FIXME portion_remaining
     @quantity = @meal.quantity
   end
 
   def create
-    @meal = Meal.find(params[:meal_id])
-
     @order = Order.new(order_params)
     # if @meal.portion_remaining >= @order.amount
     @customer = Customer.create!(user: current_user, meal: @meal)
@@ -31,6 +30,11 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def find_meal
+    @meal = Meal.find(params[:meal_id])
+  end
+
 
   def order_params
     params.require(:order).permit(:amount, :message)
