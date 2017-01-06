@@ -21,6 +21,10 @@ class MealsController < ApplicationController
   end
 
   def edit
+    unless @meal.customers.empty?
+      flash[:alert] = "Sorry, it\'s not possible to edit the meal, since it has already been ordered"
+      redirect_to dashboard_path
+    end
   end
 
   def update
