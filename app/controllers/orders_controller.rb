@@ -7,8 +7,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    ## FIX ME portion_remaining
-    @quantity = @meal.quantity
+    @quantity = @meal.portion_remaining
   end
 
   def create
