@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
 
   resources :meals, only: [:index, :show, :new, :create] do
+    resources :pictures, only: [:create, :update, :destroy]
     resources :reviews, only: [:index, :new, :create]
     resources :orders, only: [:index, :new, :create] do
       member do

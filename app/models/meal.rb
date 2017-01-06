@@ -3,4 +3,6 @@ class Meal < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :pictures, dependent: :destroy
   has_many :customers, dependent: :destroy
+
+  mount_uploader :photo, PhotoUploader
 end
