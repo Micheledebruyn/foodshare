@@ -1,0 +1,12 @@
+.btn-default {
+  background-color: $form-button-color;
+  color: white;
+  border: none;
+  opacity: 0.9;
+  transition: opacity 200ms ease;
+  &:hover {
+    background-color: $form-button-color;
+    opacity: 1;
+    color: white;
+  }
+}

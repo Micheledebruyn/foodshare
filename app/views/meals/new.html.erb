@@ -1,11 +1,18 @@
-<h1>The page where you can create a NEW MEAL</h1>
-
-<%= simple_form_for @meal do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.input :quantity %>
-  <%= f.input :photos, as: :attachinary %>
-  <%= f.button :submit %>
-<% end %>
+<%= render partial: "shared/banner", 
+locals: { 
+  form: false, 
+  header: "Create a new meal", 
+  image: "https://unsplash.it/1700/600",
+  cloudinary: false
+} %>
+<div class="background-wrapper">
+  <%= simple_form_for @meal do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.input :quantity %>
+    <%= f.input :photos, as: :attachinary %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

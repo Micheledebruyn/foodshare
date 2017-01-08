@@ -1,0 +1,27 @@
+<%= link_to meal_path(meal) do %>
+<div class="card">
+  <div class="quantity">
+    <%= meal.quantity %>
+  </div>
+  <h3>
+    <%= meal.title %>
+  </h3>
+  <p>
+    <%= meal.description %>
+  </p>
+  <div class="duration">
+    <p>
+      <i class="fa fa-calendar"></i>
+      <%= meal.start_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <i class="fa fa-calendar"></i>
+      <%= meal.end_date.strftime("%m/%d/%Y") %>
+    </p>
+  </div>
+  <div class="creator">
+    <%= image_tag "placeholder.png", class: "avatar" %>
+    <%= meal.creator.first_name %>
+  </div>
+</div>
+<% end %>

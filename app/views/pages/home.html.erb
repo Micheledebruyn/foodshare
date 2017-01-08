@@ -1,16 +1,11 @@
-<div class="banner">
-  <div class="banner-content">
-    <h1>
-      Sharebly: For a tastier world
-    </h1>
-    <div class="banner-search">
-      <%= form_tag("/meals", method: "get") do %>
-      <%= text_field_tag(:query, "Chicken curry") %>
-      <%= submit_tag("Search", class: "btn") %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render partial: "shared/banner", 
+locals: { 
+  form: true, 
+  header: "Sharebly: For a tastier world", 
+  image: "https://unsplash.it/1400/600",
+  placeholder: "Chicken curry",
+  cloudinary: false
+} %>
 
 <div class="featured-wrapper">
   <div class="container">
@@ -20,31 +15,9 @@
     <div class="row">
       <% @meals.each do |meal| %>
       <div class="col-xs-4">
-        <div class="card">
-          <div class="quantity">
-            <%= meal.quantity %>
-          </div>
-          <h3>
-            <%= meal.title %>
-          </h3>
-          <p>
-            <%= meal.description %>
-          </p>
-          <div class="duration">
-            <p>
-              <i class="fa fa-calendar"></i>
-              <%= meal.start_date.strftime("%m/%d/%Y") %>
-            </p>
-            <p>
-              <i class="fa fa-calendar"></i>
-              <%= meal.end_date.strftime("%m/%d/%Y") %>
-            </p>
-          </div>
-          <div class="creator">
-            <%= image_tag "placeholder.png", class: "avatar" %>
-            <%= meal.creator.first_name %>
-          </div>
-        </div>
+        <%= render partial: "shared/card", locals: { 
+          meal: meal 
+        } %>
       </div>
       <% end %>
     </div>

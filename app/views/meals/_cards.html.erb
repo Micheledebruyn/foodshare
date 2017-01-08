@@ -1,0 +1,14 @@
+<div class="background-wrapper">
+  <h2 id="featured-home">
+    All meals
+  </h2>
+  <div class="row">
+    <% meals.each do |meal| %>
+    <div class="col-xs-<%= column_size %>">
+      <%= render partial: "shared/card", locals: { 
+        meal: meal 
+      } %>
+    </div>
+    <% end %>
+  </div>
+</div>

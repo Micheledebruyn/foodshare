@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   before_action :find_meal, only: [:show, :edit, :update]
 
   def index
-    @meals = Meal.all
+    @meals = Meal.where("title ILIKE ?", "%#{params[:query]}%")
   end
 
   def show
@@ -16,8 +16,11 @@ class MealsController < ApplicationController
     @meal = Meal.new(meal_params)
     @meal.creator_id = current_user.id
     @meal.portion_remaining = @meal.quantity
-    @meal.save!
-    redirect_to meals_path
+    if @meal.save!
+      redirect_to meals_path
+    else
+      render 'new'
+    end
   end
 
   def edit
