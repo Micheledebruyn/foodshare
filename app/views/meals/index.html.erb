@@ -1,10 +1,29 @@
-<h1>This is the index page for all the MEALS</h1>
-<ul>
- ------
-<% @meals.each do |meal| %>
- <li><%= meal.title %></li>
- <li><%= meal.description %></li>
- <%= link_to "See meal", meal_path(meal) %>
- -------
-<% end %>
-</ul>
+<%= render partial: "shared/banner", 
+locals: { 
+  form: true, 
+  header: "Find your meals", 
+  image: "https://unsplash.it/1500/600",
+  placeholder: params[:query],
+  cloudinary: false
+} %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <% if @meals.any? %>
+      <%= render partial: "meals/cards", locals: { meals: @meals, column_size: 6} %>
+      <% else %>
+      <h2 id="featured-home">
+        Sorry! 
+      </h2>
+      <p>
+        No meals could be found. Please try another query
+      </p>
+      <% end %>
+    </div>
+    <div class="col-xs-6">
+      <%= render partial: "meals/map" %>
+    </div>
+  </div>
+</div>
+

@@ -1,6 +1,14 @@
-<h2>Log in</h2>
+<%= render partial: "shared/banner", 
+locals: { 
+  form: false, 
+  header: "Log in", 
+  image: "https://unsplash.it/1700/600",
+  cloudinary: false
+} %>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="background-wrapper">
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email, required: false, autofocus: true %>
     <%= f.input :password, required: false %>
@@ -10,6 +18,8 @@
   <div class="form-actions">
     <%= f.button :submit, "Log in" %>
   </div>
-<% end %>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+
+</div>

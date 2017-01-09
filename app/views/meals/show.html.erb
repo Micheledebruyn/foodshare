@@ -1,6 +1,13 @@
-<h1>This is the page where you can see 1 MEAL (SHOW)</h1>
+<% @meal.photos.any? ? image = @meal.photos.first.path : image = "https://unsplash.it/1700/600" %>
 
-<%= @meal.title %>
+<%= render partial: "shared/banner", 
+locals: { 
+  form: false, 
+  header: @meal.title, 
+  image: image,
+  cloudinary: true
+} %>
+
 <% @meal.photos.each do |photo| %>
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
